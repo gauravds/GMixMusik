@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<MBProgressHUDDelegate>
 
 @end
 
@@ -16,7 +16,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    isDebuggerMode = YES;
+    mainWindow = self.window;
+    mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    navController = (UINavigationController*)self.window.rootViewController;
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.window];
+    [HUD setGraceTime:0.5f];
+    [HUD setDelegate:self];
+    
     return YES;
 }
 
@@ -42,4 +51,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    [hud removeFromSuperview];
+}
 @end
