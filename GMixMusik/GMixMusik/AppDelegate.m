@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()<MBProgressHUDDelegate>
 
@@ -25,6 +26,14 @@
     HUD = [[MBProgressHUD alloc] initWithView:self.window];
     [HUD setGraceTime:0.5f];
     [HUD setDelegate:self];
+    
+    //-- play audio at background or lock state; also register for background mode for audio
+    NSError *setCategoryErr = nil;
+    NSError *activationErr  = nil;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback
+                                           error:&setCategoryErr];
+    [[AVAudioSession sharedInstance] setActive:YES
+                                         error:&activationErr];
     
     return YES;
 }

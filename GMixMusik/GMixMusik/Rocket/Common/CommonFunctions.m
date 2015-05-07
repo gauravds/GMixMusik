@@ -401,10 +401,10 @@
     }
 }
 + (void) AlertWithMsg:(NSString*)msg{
-    [self AlertTitle:@"H2O" withMsg:msg];
+    [self AlertTitle:@"GMix Musik" withMsg:msg];
 }
 + (void) AlertWithMsg:(NSString*)msg andDelegate:(id)delegate{
-    [self AlertTitle:@"H2O" withMsg:msg andDelegate:delegate];
+    [self AlertTitle:@"GMix Musik" withMsg:msg andDelegate:delegate];
 }
 
 +(void) AlertTitle:(NSString*)title withMsg:(NSString*)msg{

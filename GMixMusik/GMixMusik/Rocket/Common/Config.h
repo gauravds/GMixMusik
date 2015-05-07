@@ -13,7 +13,7 @@
 #import "GSFont.h"
 
 #define DOCUMENT_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-
+#define TMP NSTemporaryDirectory()
 #define kClientIDSoundCloud @"4346c8125f4f5c40ad666bacd8e96498"
 #define kAPIURLSearchSoundCloud @"https://api.soundcloud.com/tracks?client_id=%@&q=%@"
 #define kAPIURLStreamSoundCloud @"http://api.soundcloud.com/tracks/%@/stream?client_id=%@"

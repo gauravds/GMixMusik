@@ -76,6 +76,7 @@
 		A4DAC27C1AFB5A91006E8215 /* GauravDS-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DAC27B1AFB5A91006E8215 /* GauravDS-Icon.png */; };
 		A4DAC27F1AFB6F3C006E8215 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DAC27E1AFB6F3C006E8215 /* FileDownloader.m */; };
 		A4DAC2821AFB71F8006E8215 /* MP3FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DAC2811AFB71F8006E8215 /* MP3FileModel.m */; };
+		A4F055A31AFBE8EF00D958EF /* TPAACAudioConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F055A21AFBE8EF00D958EF /* TPAACAudioConverter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +214,8 @@
 		A4DAC27E1AFB6F3C006E8215 /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDownloader.m; path = MyFiles/FileDownloader.m; sourceTree = "<group>"; };
 		A4DAC2801AFB71F8006E8215 /* MP3FileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MP3FileModel.h; path = MyFiles/MP3FileModel.h; sourceTree = "<group>"; };
 		A4DAC2811AFB71F8006E8215 /* MP3FileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MP3FileModel.m; path = MyFiles/MP3FileModel.m; sourceTree = "<group>"; };
+		A4F055A11AFBE8EF00D958EF /* TPAACAudioConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPAACAudioConverter.h; sourceTree = "<group>"; };
+		A4F055A21AFBE8EF00D958EF /* TPAACAudioConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPAACAudioConverter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +299,8 @@
 		A4DAC1AD1AFB4634006E8215 /* MyFiles */ = {
 			isa = PBXGroup;
 			children = (
+				A4F055A11AFBE8EF00D958EF /* TPAACAudioConverter.h */,
+				A4F055A21AFBE8EF00D958EF /* TPAACAudioConverter.m */,
 				A4DAC2761AFB511C006E8215 /* CustomCells */,
 				A4DAC1AA1AFB462F006E8215 /* HomeViewController.h */,
 				A4DAC1AB1AFB462F006E8215 /* HomeViewController.m */,
@@ -596,6 +601,11 @@
 				TargetAttributes = {
 					A4DAC1801AFB41E7006E8215 = {
 						CreatedOnToolsVersion = 6.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					A4DAC1991AFB41E7006E8215 = {
 						CreatedOnToolsVersion = 6.3;
@@ -702,6 +712,7 @@
 				A4DAC2261AFB468B006E8215 /* CommonFunctions.m in Sources */,
 				A4DAC2411AFB468B006E8215 /* UIImage+Additions.m in Sources */,
 				A4DAC22B1AFB468B006E8215 /* ContactsData.m in Sources */,
+				A4F055A31AFBE8EF00D958EF /* TPAACAudioConverter.m in Sources */,
 				A4DAC2351AFB468B006E8215 /* NSDate+InternetDateTime.m in Sources */,
 				A4DAC2291AFB468B006E8215 /* NSDate+Utilities.m in Sources */,
 				A4DAC2421AFB468B006E8215 /* UIImage+Alpha.m in Sources */,

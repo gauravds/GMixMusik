@@ -10,13 +10,18 @@
 #import "HomeTableViewCell.h"
 #import "FileDownloader.h"
 #import "MP3FileModel.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface HomeViewController ()<UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
     __weak IBOutlet UITableView *tblView;
     NSArray *arrayTableData;
+    AVAudioPlayer *player;
 }
 - (IBAction)btnDownloadTapped:(UIButton*)sender;
 - (IBAction)btnPlayTabbed:(UIButton*)sender;
+
+- (IBAction)btnAlreadyDownloadedTapped:(id)sender;
 @end
 
 @implementation HomeViewController
@@ -140,7 +145,7 @@
     
     NSDictionary *dictForCell = arrayTableData[sender.tag];
     NSString *title = (dictForCell[@"title"] == [NSNull null]) ? @"" : dictForCell[@"title"];
-    NSString *songID = [@((NSInteger)dictForCell[@"id"]) stringValue];
+    NSString *songID = [@([dictForCell[@"id"] integerValue]) stringValue];
     if ([Validate isNull:songID]) {
         return;
     }
@@ -152,6 +157,15 @@
 
 - (IBAction)btnPlayTabbed:(UIButton*)sender {
     pr(@"play %d:%@", sender.tag, arrayTableData[sender.tag]);
+}
+
+- (IBAction)btnAlreadyDownloadedTapped:(id)sender {
+    NSString *localPath = [NSString stringWithFormat:@"%@/last.mp3", TMP];
+    NSData *localData = [NSData dataWithContentsOfFile:localPath];
+    player = [[AVAudioPlayer alloc] initWithData:localData error:nil];
+    player.numberOfLoops = -1; //Infinite
+    player.volume = 1.f;
+    [player play];
 }
 
 #pragma mark -
