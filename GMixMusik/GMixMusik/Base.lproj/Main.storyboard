@@ -149,7 +149,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fnw-AM-gFm"/>
-                                    <barButtonItem image="Download.png" style="plain" id="sZW-2C-xMC"/>
+                                    <barButtonItem image="Download.png" style="plain" id="sZW-2C-xMC">
+                                        <connections>
+                                            <action selector="btnAlreadyDownloadingTapped:" destination="fKg-r8-eQD" id="1o8-DP-B8r"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

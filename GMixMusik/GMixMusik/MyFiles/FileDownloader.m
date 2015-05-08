@@ -195,7 +195,7 @@ didReceiveResponse:(NSURLResponse *)response {
     // Generate a unique path to a resource representing the image you want
     NSString *filename = [NSString stringWithFormat:@"last.mp3"];//@"%@.mp3",tempImgUrlStr] ;
     // [[something unique, perhaps the image name]];
-    NSString *uniquePath = [TMP stringByAppendingPathComponent: filename];
+    NSString *uniquePath = [DOCUMENT_PATH stringByAppendingPathComponent: filename];
     pro(uniquePath);
     return uniquePath;
 }

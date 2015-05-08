@@ -22,6 +22,7 @@
 - (IBAction)btnPlayTabbed:(UIButton*)sender;
 
 - (IBAction)btnAlreadyDownloadedTapped:(id)sender;
+- (IBAction)btnAlreadyDownloadingTapped:(id)sender;
 @end
 
 @implementation HomeViewController
@@ -160,14 +161,20 @@
 }
 
 - (IBAction)btnAlreadyDownloadedTapped:(id)sender {
-    NSString *localPath = [NSString stringWithFormat:@"%@/last.mp3", TMP];
+    NSString *localPath = [NSString stringWithFormat:@"%@/last.mp3", DOCUMENT_PATH];
+    NSURL *fileURL = [NSURL fileURLWithPath:localPath isDirectory:NO];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[fileURL] applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:nil];
+}
+
+- (IBAction)btnAlreadyDownloadingTapped:(id)sender {
+    NSString *localPath = [NSString stringWithFormat:@"%@/last.mp3", DOCUMENT_PATH];
     NSData *localData = [NSData dataWithContentsOfFile:localPath];
     player = [[AVAudioPlayer alloc] initWithData:localData error:nil];
     player.numberOfLoops = -1; //Infinite
     player.volume = 1.f;
     [player play];
 }
-
 #pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
