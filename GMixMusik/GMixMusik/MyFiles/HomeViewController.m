@@ -174,6 +174,21 @@
     player.numberOfLoops = -1; //Infinite
     player.volume = 1.f;
     [player play];
+    
+//    //-- open in option
+//    <UIDocumentInteractionControllerDelegate>
+//    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"sample" withExtension:@"pdf"];
+//    
+//    if (URL) {
+//        // Initialize Document Interaction Controller
+//        self.documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:URL];
+//        
+//        // Configure Document Interaction Controller
+//        [self.documentInteractionController setDelegate:self];
+//        
+//        // Present Open In Menu
+//        [self.documentInteractionController presentOpenInMenuFromRect:[button frame] inView:self.view animated:YES];
+//    }
 }
 #pragma mark -
 - (void)didReceiveMemoryWarning {
