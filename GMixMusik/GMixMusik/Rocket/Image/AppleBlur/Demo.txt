@@ -1,0 +1,36 @@
++ (UIImage*)getCurrentScreenShot {
+    
+    UIWindow *window = [(AppDelegate*)[[UIApplication sharedApplication] delegate] window];
+    
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+        
+        UIGraphicsBeginImageContextWithOptions(window.bounds.size, NO, [UIScreen mainScreen].scale);
+    
+    else
+        
+        UIGraphicsBeginImageContext(window.bounds.size);
+    
+    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+///////////////////////////////////////////////////
+UIImage *bgBlurImage = [CommonFunctions getCurrentScreenShot];
+UIImageView *bgImageBlurView = [[UIImageView alloc] initWithFrame:mainWindow.frame];
+[bgImageBlurView setImage:[bgBlurImage applyBlur]];
+[self.view insertSubview:bgImageBlurView atIndex:0];
+
+//    [bgImageBlurView setImage:[bgImage applyBlurWithRadius:4.0f
+//                                             tintColor:[UIColor clearColor]
+//                                 saturationDeltaFactor:0.2f
+//                                             maskImage:nil]];
+
+
+////////////////////////////////////////////////////
+PushViewController *pushVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PushViewController"];
+[self presentViewController:pushVC animated:YES completion:NULL];

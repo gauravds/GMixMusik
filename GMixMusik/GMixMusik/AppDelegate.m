@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<MBProgressHUDDelegate>
 
 @end
 
@@ -16,7 +17,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    isDebuggerMode = YES;
+    mainWindow = self.window;
+    mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    navController = (UINavigationController*)self.window.rootViewController;
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.window];
+    [HUD setGraceTime:0.5f];
+    [HUD setDelegate:self];
+    
+    //-- play audio at background or lock state; also register for background mode for audio
+    NSError *setCategoryErr = nil;
+    NSError *activationErr  = nil;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback
+                                           error:&setCategoryErr];
+    [[AVAudioSession sharedInstance] setActive:YES
+                                         error:&activationErr];
+    
     return YES;
 }
 
@@ -42,4 +60,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    [hud removeFromSuperview];
+}
 @end
